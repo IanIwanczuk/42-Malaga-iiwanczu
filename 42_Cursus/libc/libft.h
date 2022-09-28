@@ -6,7 +6,7 @@
 /*   By: iiwanczu <iiwanczu@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 19:51:19 by iiwanczu          #+#    #+#             */
-/*   Updated: 2022/09/28 16:21:44 by iiwanczu         ###   ########.fr       */
+/*   Updated: 2022/09/28 17:00:59 by iiwanczu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,6 @@ int				ft_toupper(int c);
 char			*ft_itoa(int n);
 char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void			ft_striteri(char *s, void (*f)(unsigned int, char*));
+char			*ft_substr(char const *s, unsigned int start, size_t len);
 
 #endif
