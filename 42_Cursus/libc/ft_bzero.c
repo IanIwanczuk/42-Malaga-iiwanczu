@@ -6,7 +6,7 @@
 /*   By: iiwanczu <iiwanczu@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:57:49 by iiwanczu          #+#    #+#             */
-/*   Updated: 2022/09/22 20:07:38 by iiwanczu         ###   ########.fr       */
+/*   Updated: 2022/09/30 15:10:47 by iiwanczu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_bzero(void *s, size_t n)
 
 	i = 0;
 	temp = (char *)s;
-	while (temp[i] != '\0' && n > 0)
+	while (n > 0)
 	{
 		temp[i] = '\0';
 		i++;

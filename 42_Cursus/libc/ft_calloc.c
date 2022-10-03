@@ -6,7 +6,7 @@
 /*   By: iiwanczu <iiwanczu@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 11:58:48 by iiwanczu          #+#    #+#             */
-/*   Updated: 2022/09/26 14:12:38 by iiwanczu         ###   ########.fr       */
+/*   Updated: 2022/09/30 16:04:14 by iiwanczu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,19 @@
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	unsigned long	i;
+	size_t			i;
 	char			*result;
 
 	i = 0;
-	if (size > 0)
+	result = (char *)malloc(count * size);
+	if (!result)
+		return (NULL);
+	while (i < count * size)
 	{
-		result = (char *)malloc(count * size);
-		while (i < count * size)
-		{
-			result[i] = 0;
-			i++;
-		}
-		return (result);
+		result[i] = 0;
+		i++;
 	}
-	return (NULL);
+	return (result);
 }
 
 // int	main(void)

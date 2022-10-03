@@ -6,7 +6,7 @@
 /*   By: iiwanczu <iiwanczu@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:58:53 by iiwanczu          #+#    #+#             */
-/*   Updated: 2022/09/23 16:59:43 by iiwanczu         ###   ########.fr       */
+/*   Updated: 2022/09/30 15:26:44 by iiwanczu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	char			*destiny;
 	char			*source;
 
+	if (!dst && !src)
+		return (NULL);
 	destiny = dst;
 	source = (char *)src;
 	i = 0;

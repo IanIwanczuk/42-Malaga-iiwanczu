@@ -6,12 +6,24 @@
 /*   By: iiwanczu <iiwanczu@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:59:03 by iiwanczu          #+#    #+#             */
-/*   Updated: 2022/09/23 17:05:57 by iiwanczu         ###   ########.fr       */
+/*   Updated: 2022/09/30 15:35:36 by iiwanczu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <string.h>
+
+static void	ft_null(char *destiny, char *source, size_t len)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < len)
+	{
+		destiny[i] = source[i];
+		i++;
+	}
+}
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
@@ -19,6 +31,8 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	char			*destiny;
 	char			*source;
 
+	if (!dst && !src)
+		return (NULL);
 	destiny = dst;
 	source = (char *)src;
 	i = 0;
@@ -32,13 +46,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 		}
 	}
 	else
-	{
-		while (source[i] != '\0' && i < len)
-		{
-			destiny[i] = source[i];
-			i++;
-		}
-	}
+		ft_null(destiny, source, len);
 	return (dst);
 }
 

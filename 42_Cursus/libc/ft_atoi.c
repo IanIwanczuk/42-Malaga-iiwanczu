@@ -6,11 +6,11 @@
 /*   By: iiwanczu <iiwanczu@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 18:44:40 by iiwanczu          #+#    #+#             */
-/*   Updated: 2022/09/23 17:37:12 by iiwanczu         ###   ########.fr       */
+/*   Updated: 2022/09/30 15:21:01 by iiwanczu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	verify_error(char *str, int *ptr_i)
+int	verify_error(const char *str, int *ptr_i)
 {
 	int	count;
 	int	i;
@@ -29,7 +29,7 @@ int	verify_error(char *str, int *ptr_i)
 	return (count);
 }
 
-int	ft_atoi(char *str)
+int	ft_atoi(const char *str)
 {
 	int	sign;
 	int	result;
