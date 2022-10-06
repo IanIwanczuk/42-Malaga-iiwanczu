@@ -1,44 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iiwanczu <iiwanczu@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/21 17:58:53 by iiwanczu          #+#    #+#             */
-/*   Updated: 2022/10/06 11:36:29 by iiwanczu         ###   ########.fr       */
+/*   Created: 2022/10/06 12:51:09 by iiwanczu          #+#    #+#             */
+/*   Updated: 2022/10/06 12:59:33 by iiwanczu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
 #include <unistd.h>
+#include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void	ft_putendl_fd(char *s, int fd)
 {
-	unsigned long	i;
-	char			*destiny;
-	char			*source;
+	size_t	i;
 
-	if (!dst && !src)
-		return (NULL);
-	destiny = dst;
-	source = (char *)src;
 	i = 0;
-	while (i < n)
-	{
-		destiny[i] = source[i];
-		i++;
-	}
-	return (dst);
+	while (i < ft_strlen(s))
+		write(fd, &s[i++], 1);
+	write(fd, "\n", 1);
 }
-
-// int	main(void)
-// {
-// 	void	*mem;
-
-// 	write(1, mem, 30);
-// 	ft_memcpy(mem, "hola", 14);
-// 	write(1, mem, 30);
-// 	printf("%s\n", mem);
-// }

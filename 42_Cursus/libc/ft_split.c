@@ -6,23 +6,25 @@
 /*   By: iiwanczu <iiwanczu@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 16:46:48 by iiwanczu          #+#    #+#             */
-/*   Updated: 2022/10/04 13:23:24 by iiwanczu         ###   ########.fr       */
+/*   Updated: 2022/10/06 11:51:47 by iiwanczu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "libft.h"
 
-static int	ft_allocate_words(char const *str, char c, char *word)
+static char	*ft_allocate_words(char const *str, char c)
 {
-	int	len;
+	char	*word;
+	int		len;
 
 	len = 0;
-	while (str[len] != c && str[len] != '\0')
+	while (str[len] != '\0' && str[len] != c)
 		len++;
 	word = ft_substr(str, 0, len);
-	printf("Word in func: [%s]\n", word);
-	return (len - 1);
+	if (!word)
+		return (NULL);
+	return (word);
 }
 
 static int	ft_count_words(char const *str, char c)
@@ -47,35 +49,40 @@ static int	ft_count_words(char const *str, char c)
 char	**ft_split(char const *s, char c)
 {
 	char	**result;
-	int		len;
 	int		i;
 
 	if (!s)
 		return (NULL);
-	i = 0;
-	result = (char **)malloc(ft_count_words(s, c) * sizeof(char *));
+	result = (char **)malloc((ft_count_words(s, c) + 1) * sizeof(char *));
 	if (!result)
 		return (NULL);
+	i = 0;
 	while (*s != '\0')
 	{
-		if (*s != c)
+		while (*s != '\0' && *s == c)
+			s++;
+		if (*s != '\0' && *s != c)
 		{
-			s += ft_allocate_words(s, c, result[i]);
-			printf("Word in main: %s\n", result[i++]);
+			result[i++] = ft_allocate_words(s, c);
+			while (*s != '\0' && *s != c)
+				s++;
 		}
-		s++;
 	}
-	i = 0;
-	// while (i < words)
-	// 	printf("%s\n", result[i++]);
+	result[i] = NULL;
 	return (result);
 }
 
-int	main(void)
-{
-	char	**result;
+// int	main(void)
+// {
+// 	char	**result;
+// 	int		i;
 
-	result = ft_split("Hola mundo hello world", ' ');
-	// printf("%s\n", result[1]);
-	return (0);
-}
+// 	i = 0;
+// 	result = ft_split("assssx laaaak gccccl xddddq", ' ');
+// 	while (result[i] != NULL)
+// 	{
+// 		printf("%d: [%s]\n", i, result[i]);
+// 		i++;
+// 	}
+// 	return (0);
+// }
