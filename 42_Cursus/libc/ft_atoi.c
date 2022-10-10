@@ -6,11 +6,11 @@
 /*   By: iiwanczu <iiwanczu@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 18:44:40 by iiwanczu          #+#    #+#             */
-/*   Updated: 2022/09/30 15:21:01 by iiwanczu         ###   ########.fr       */
+/*   Updated: 2022/10/10 13:20:30 by iiwanczu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	verify_error(const char *str, int *ptr_i)
+static int	verify_error(const char *str, int *ptr_i)
 {
 	int	count;
 	int	i;

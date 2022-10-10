@@ -6,14 +6,14 @@
 /*   By: iiwanczu <iiwanczu@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 14:55:48 by iiwanczu          #+#    #+#             */
-/*   Updated: 2022/09/28 13:46:21 by iiwanczu         ###   ########.fr       */
+/*   Updated: 2022/10/10 13:20:49 by iiwanczu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 
-long int	ft_int_len(int n)
+static long int	ft_int_len(int n)
 {
 	long int	len;
 
