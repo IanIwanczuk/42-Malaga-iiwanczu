@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 NAME = libftprintf.a
-SRCS = ft_printf.c ft_printf_utils.c
+SRCS = ft_printf.c ft_printf_utils.c ft_print_ptr.c
 OBJS = ${SRCS:.c=.o}
 LIBFT = ./libft/libft.a
 RM = rm -f
@@ -9,7 +9,8 @@ LIBC = ar rcs
 
 ${NAME}: ${OBJS}
 	${MAKE} -C ./libft
-	cp libft/libft.a ${NAME}
+	cp libft/libft.a .
+	mv libft.a ${NAME}
 	${LIBC} ${NAME} ${OBJS}
 
 all: ${NAME}

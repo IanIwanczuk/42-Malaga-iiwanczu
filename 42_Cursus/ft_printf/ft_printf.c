@@ -6,7 +6,7 @@
 /*   By: iiwanczu <iiwanczu@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 19:15:57 by iiwanczu          #+#    #+#             */
-/*   Updated: 2022/10/13 17:45:41 by iiwanczu         ###   ########.fr       */
+/*   Updated: 2022/10/13 18:04:36 by iiwanczu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,11 @@
 
 // -----------------------------------------------------------------------------
 // Lograr hacer que la funcion printee el string recibido e imprima los valores.
-//	1) %c Imprime un solo carácter.
-//	2) %s Imprime una string (como se define por defecto en C).
-//	3) %d Imprime un número decimal (base 10).
-//	4) %i Imprime un entero en base 10.
-//	5) %% para imprimir el símbolo del porcentaje.
-//	6) %p El puntero void * dado como argumento se imprime en 
-//	  formato hexadecimal.
-//	7) %u Imprime un número decimal (base 10) sin signo.
-//	8) %x Imprime un número hexadecimal (base 16) en minúsculas.
-//	9) %X Imprime un número hexadecimal (base 16) en mayúsculas.
+//	1) %p El puntero void * dado como argumento se imprime en 
+//	   formato hexadecimal.
+//	2) %u Imprime un número decimal (base 10) sin signo.
+//	3) %x Imprime un número hexadecimal (base 16) en minúsculas.
+//	4) %X Imprime un número hexadecimal (base 16) en mayúsculas.
 // -----------------------------------------------------------------------------
 
 // value_type --> Type of the value we are going to print, represented
@@ -47,6 +42,8 @@ int	ft_print_value(va_list args, const char value_type)
 		value_len += ft_printnbr(va_arg(args, int));
 	else if (value_type == '%')
 		value_len += ft_putchar('%');
+	else if (value_type == 'p')
+		value_len += ft_print_ptr(va_arg(args, unsigned long long));
 	return (value_len);
 }
 
