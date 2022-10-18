@@ -4,20 +4,15 @@ OBJS = ${SRCS:.c=.o}
 OBJS_BONUS = ${SRCS_BONUS:.c=.o}
 NAME = libft.a
 RM = rm -f
-CC = gcc
-CFLAGS = -Wall -Werror -Wextra
 LIBC = ar rcs
 
-.c.o: ${SRCS}
-	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+all: ${NAME}
 
 ${NAME}: ${OBJS}
 	${LIBC} ${NAME} ${OBJS}
 
 bonus: ${OBJS_BONUS} ${OBJS}
 	${LIBC} ${NAME} ${OBJS_BONUS} ${OBJS}
-
-all: ${NAME}
 
 clean: 
 	${RM} ${OBJS} ${OBJS_BONUS} 

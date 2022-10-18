@@ -1,23 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iiwanczu <iiwanczu@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/06 12:42:40 by iiwanczu          #+#    #+#             */
-/*   Updated: 2022/10/06 12:49:01 by iiwanczu         ###   ########.fr       */
+/*   Created: 2022/10/17 17:06:28 by iiwanczu          #+#    #+#             */
+/*   Updated: 2022/10/18 16:25:20 by iiwanczu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include "libft.h"
+#include "get_next_line.h"
 
-void	ft_putstr_fd(char *s, int fd)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	i;
+	size_t		i;
+	size_t		j;
+	char		*joined;
 
+	if (!(s1) || !(s2))
+		return (NULL);
+	joined = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1 * sizeof(char));
+	if (!joined)
+		return (NULL);
 	i = 0;
-	while (i < ft_strlen(s))
-		write(fd, &s[i++], 1);
+	j = 0;
+	while (s1[i] != '\0')
+		joined[j++] = s1[i++];
+	i = 0;
+	while (s2[i] != '\0')
+		joined[j++] = s2[i++];
+	joined[j] = '\0';
+	return (joined);
 }
