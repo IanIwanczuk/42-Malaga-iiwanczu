@@ -6,7 +6,7 @@
 /*   By: iiwanczu <iiwanczu@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 15:32:42 by iiwanczu          #+#    #+#             */
-/*   Updated: 2022/09/26 13:36:58 by iiwanczu         ###   ########.fr       */
+/*   Updated: 2022/10/19 16:19:25 by iiwanczu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ char	*ft_strrchr(const char *s, int c)
 
 // int	main(void)
 // {
-// 	printf("%s\n", ft_strchr("Hola como como estas", 'x'));
+// 	printf("%s\n", ft_strrchr("Hola como como estas", 'l'));
 // 	return (0);
-// } 23
+// }

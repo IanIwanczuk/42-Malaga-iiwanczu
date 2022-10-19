@@ -1,9 +1,4 @@
-?Lorem ipsum dolor sit amet, consectetur adipiscing elit*
-?Proin suscipit faucibus erat, ut feugiat orci pretium no*
-?Donec placerat metus id mauris condimentum, quis tincidunt est vulputate*
-?Pellentesque finibus sapien vel mollis dictum. Sed vel justo justo*
-?Cras imperdiet nec ex a mollis. Aenean sit amet efficitur lorem*
-?Fusce erat magna, porttitor at ex ac, lobortis bibendum neque*
-?Nullam tristique at elit vitae ornare. In hac habitasse platea dictumst*
-?Vestibulum commodo consectetur fermentum. Nam fermentum commodo maximus*
-?Curabitur venenatis quam sed est pulvinar, vel varius nisi alique*
+?Hello World*
+?Good morning*
+
+?This is a test*
