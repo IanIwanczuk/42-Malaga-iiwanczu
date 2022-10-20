@@ -6,13 +6,13 @@
 /*   By: iiwanczu <iiwanczu@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 17:06:28 by iiwanczu          #+#    #+#             */
-/*   Updated: 2022/10/19 19:27:01 by iiwanczu         ###   ########.fr       */
+/*   Updated: 2022/10/20 17:01:05 by iiwanczu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *str)
+size_t	ft_strlen(char *str)
 {
 	size_t	i;
 
@@ -20,13 +20,11 @@ size_t	ft_strlen(const char *str)
 	if (!str)
 		return (0);
 	while (str[i] != '\0')
-	{
 		i++;
-	}
 	return (i);
 }
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strchr(char *s, int c)
 {
 	int	i;
 
@@ -64,7 +62,7 @@ char	*ft_strjoin(char *s1, char *s2)
 		return (NULL);
 	i = -1;
 	j = 0;
-	if (s1) 
+	if (s1)
 		while (s1[++i] != '\0')
 			joined[i] = s1[i];
 	while (s2[j] != '\0')

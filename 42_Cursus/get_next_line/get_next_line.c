@@ -6,7 +6,7 @@
 /*   By: iiwanczu <iiwanczu@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 17:06:27 by iiwanczu          #+#    #+#             */
-/*   Updated: 2022/10/20 14:22:07 by iiwanczu         ###   ########.fr       */
+/*   Updated: 2022/10/20 16:40:14 by iiwanczu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	*ft_read_file(int fd, char *buffer)
 	if (!str)
 		return (NULL);
 	r = 1;
-	while (!ft_strchr(str, '\n') && r != 0)
+	while (!ft_strchr(buffer, '\n') && r != 0)
 	{
 		r = read(fd, str, BUFFER_SIZE);
 		if (r == -1)
@@ -66,9 +66,9 @@ char	*ft_read_file(int fd, char *buffer)
 
 char	*ft_get_str(char *buffer)
 {
-	char	*str;
 	int		i;
 	int		j;
+	char	*str;
 
 	i = 0;
 	while (buffer[i] != '\0' && buffer[i] != '\n')
@@ -78,7 +78,7 @@ char	*ft_get_str(char *buffer)
 		free(buffer);
 		return (NULL);
 	}
-	str = (char *)malloc(sizeof(char) * ft_strlen(buffer) - i + 1);
+	str = (char *)malloc(sizeof(char) * (ft_strlen(buffer) - i + 1));
 	if (!str)
 		return (NULL);
 	i++;
@@ -95,7 +95,7 @@ char	*get_next_line(int fd)
 	static char	*buffer;
 	char		*line;
 
-	if ((fd < 0) || (BUFFER_SIZE <= 0))
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	buffer = ft_read_file(fd, buffer);
 	if (!buffer)
@@ -107,18 +107,20 @@ char	*get_next_line(int fd)
 
 // int	main(void)
 // {
-// 	int		i;
 // 	int		fd;
 // 	char	*result;
+// 	int		i;
 
-// 	i = 0;
 // 	fd = open("test.txt", O_RDONLY);
-// 	while (i < 5)
+// 	result = get_next_line(fd);
+// 	while (result != NULL)
 // 	{
-// 		result = get_next_line(fd);
 // 		i++;
 // 		printf("%d::%s", i, result);
+// 		result = get_next_line(fd);
+// 		free(result);
 // 	}
 // 	close(fd);
+// 	system("leaks -q a.out");
 // 	return (0);
 // }
