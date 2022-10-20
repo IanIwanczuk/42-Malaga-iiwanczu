@@ -6,7 +6,7 @@
 /*   By: iiwanczu <iiwanczu@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 17:06:27 by iiwanczu          #+#    #+#             */
-/*   Updated: 2022/10/19 19:44:04 by iiwanczu         ###   ########.fr       */
+/*   Updated: 2022/10/20 14:22:07 by iiwanczu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,6 @@ char	*get_next_line(int fd)
 		return (NULL);
 	line = ft_get_line(buffer);
 	buffer = ft_get_str(buffer);
-
 	return (line);
 }
 
