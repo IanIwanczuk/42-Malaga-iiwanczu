@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iiwanczu <iiwanczu@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/17 15:31:58 by iiwanczu          #+#    #+#             */
-/*   Updated: 2022/10/12 15:37:35 by iiwanczu         ###   ########.fr       */
+/*   Created: 2022/10/17 17:06:26 by iiwanczu          #+#    #+#             */
+/*   Updated: 2022/10/21 15:19:51 by iiwanczu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <fcntl.h>
 
-void	ft_putstr(char *str);
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 6
+# endif
 
-int	main(void)
-{
-	char 	c[] = "Hello World";
-	char	*string;
+char	*get_next_line(int fd);
+char	*ft_strjoin(char *s1, char *s2);
+char	*ft_strchr(char *s, int c);
+size_t	ft_strlen(char *str);
 
-	string = c;
-	ft_putstr(string);
-	return (0);
-}
-
-void	ft_putstr(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
-}
+#endif

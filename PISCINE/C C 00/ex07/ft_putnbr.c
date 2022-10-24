@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iiwanczu <iiwanczu@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: iiwanczu <iiwanczu@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 16:44:38 by iiwanczu          #+#    #+#             */
-/*   Updated: 2022/08/15 16:44:40 by iiwanczu         ###   ########.fr       */
+/*   Updated: 2022/10/12 15:36:58 by iiwanczu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -6,7 +6,7 @@
 /*   By: iiwanczu <iiwanczu@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 17:06:26 by iiwanczu          #+#    #+#             */
-/*   Updated: 2022/10/20 16:33:45 by iiwanczu         ###   ########.fr       */
+/*   Updated: 2022/10/21 15:20:07 by iiwanczu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 6
-// [ 3 - 5 ]--> DA PROBLEMAS
 # endif
 
 char	*get_next_line(int fd);
