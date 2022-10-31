@@ -6,7 +6,7 @@
 /*   By: iiwanczu <iiwanczu@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 17:11:20 by iiwanczu          #+#    #+#             */
-/*   Updated: 2022/10/31 19:20:24 by iiwanczu         ###   ########.fr       */
+/*   Updated: 2022/10/31 20:05:38 by iiwanczu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,6 @@ char	*ft_look_for_line(char *static_string)
 
 /****************************************************************************
 
-· Here we would need a do-while but since it's prohibited by norm, we have to
-do a weird method where inside the while one condition is "r != 0", which
-basically means, read() was able to read something (If positive).
-
 >> ssize_t	r;
 1- "r" will be the return from the function read(), whenever we call it with
 the fd the function recieves.
@@ -43,17 +39,61 @@ the fd the function recieves.
 >> char	*temp;
 1- This will be the array of all the characters each time we read the file. 
 BUT, we'll read <BUFFER_SIZE> amount of characters, no more, no less.
+2- Since this is a temp string for the <BUFFER_SIZE> amount of characters, we
+can already do malloc to ith with the amount we know we need. Plus one because
+of the null character ('\0').
 
+>> r = 1;
+1- Here we would use a do-while but since it's prohibited by norm, we have to
+do a weird method where inside the while, one condition is "r != 0", which
+basically means, read() was able to read something (If positive).
+
+>> while (!ft_strchr(static_string, '\n') && r != 0)
+1- The "r" condition is really easy, "r" is the return value of the function
+read() everytime we call it, and it it's positive we'll keep going. But if
+it's negative we have a sepparate condition inside the while loop.
+
+2- The "!ft_strchr(static_string, '\n')" conditon may look a little bit
+strange, but basically what we're trying to ask with "ft_strchr()" (without 
+negation) is: Is there a new line character in the "temp" char array?
+If there is, then we can finally get a LINE, and we can leave the loop. If
+not, then we shall keep going.
+
+· So then, this while loop will only stop if: read() function does NOT return
+a positive value, OR if the ft_strchr() returns something different from NULL.
+
+>> if (r == -1)
+1- If the read fails inside the loop, we just free "temp", because it's dynamic
+memory and we don't wanna waste space. And we also free "static_string", in
+case there's something saved in there, because again, this is all dynamic
+memory, in which we don't wanna waste space on. 
+
+>> temp[r] = '\0';
+1- Here we are just manually writing assigning the null character to the string.
+This is why I had to do the "(BUFFER_SIZE + 1)" when we did the malloc to "temp".
 
 ****************************************************************************/
-int	ft_read_file(int fd)
+int	ft_read_file(int fd, char *static_string)
 {
 	ssize_t	r;
 	char	*temp;
 
+	temp = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	r = 1;
-
-	return (0);
+	while (!ft_strchr(static_string, '\n') && r != 0)
+	{
+		r = read(fd, temp, BUFFER_SIZE);
+		if (r == -1)
+		{
+			free(temp);
+			free(static_string);
+			return (NULL);
+		}
+		temp[r] = '\0';
+		static_string = ft_strjoin(static_string, temp);
+	}
+	free(temp);
+	return (static_string);
 }
 
 /****************************************************************************
@@ -108,7 +148,7 @@ remaining characters.
 >> return (returned_line);
 4- And finally, we just return the extracted line.
 
-*****************************************************************************/
+****************************************************************************/
 char	*get_next_line(int fd)
 {
 	static char	*static_string;
@@ -116,7 +156,7 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	static_string = ft_read_file(fd);
+	static_string = ft_read_file(fd, static_string);
 	returned_line = ft_look_for_line(static_string);
 	static_string = ft_remaining_string(static_string);
 	return (returned_line);
