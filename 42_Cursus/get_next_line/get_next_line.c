@@ -6,7 +6,7 @@
 /*   By: iiwanczu <iiwanczu@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 17:11:20 by iiwanczu          #+#    #+#             */
-/*   Updated: 2022/10/31 20:05:38 by iiwanczu         ###   ########.fr       */
+/*   Updated: 2022/10/31 20:07:21 by iiwanczu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,11 @@ memory, in which we don't wanna waste space on.
 >> temp[r] = '\0';
 1- Here we are just manually writing assigning the null character to the string.
 This is why I had to do the "(BUFFER_SIZE + 1)" when we did the malloc to "temp".
+
+>> free(temp);
+>> return (static_string);
+1- Then we can just free "temp" because we don't use it anymore, and return the
+new assigned "static_string".
 
 ****************************************************************************/
 int	ft_read_file(int fd, char *static_string)
