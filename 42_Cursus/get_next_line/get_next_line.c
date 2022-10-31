@@ -24,9 +24,18 @@ char	*ft_remaining_string(char *static_string)
 	return (0);
 }
 
+/****************************************************************************
+
+****************************************************************************/
 char	*ft_look_for_line(char *static_string)
 {
+	char	*temp;
+	int		i;
 
+	i = 0;
+	while (static_string[i] != '\0' && static_string[i] != '\n')
+		i++;
+	temp = (char *)malloc((i + 1) * sizeof(char));
 	return (0);
 }
 
