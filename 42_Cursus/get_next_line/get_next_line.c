@@ -36,6 +36,8 @@ char	*ft_look_for_line(char *static_string)
 	while (static_string[i] != '\0' && static_string[i] != '\n')
 		i++;
 	temp = (char *)malloc((i + 1) * sizeof(char));
+	i = 0;
+	while(static_string)
 	return (0);
 }
 
