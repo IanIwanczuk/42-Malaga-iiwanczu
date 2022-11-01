@@ -6,7 +6,7 @@
 /*   By: iiwanczu <iiwanczu@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 17:11:20 by iiwanczu          #+#    #+#             */
-/*   Updated: 2022/11/01 14:23:31 by iiwanczu         ###   ########.fr       */
+/*   Updated: 2022/11/01 18:31:46 by iiwanczu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 // ----------- Archivos a entregar -----------
 // get_next_line.c, get_next_line_utils.c,
 // get_next_line.h
-
 
 /****************************************************************************
 
@@ -32,10 +31,18 @@ char	*ft_remaining_string(char *static_string)
 	j = 0;
 	while (static_string[i] != '\0' && static_string[i] != '\n')
 		i++;
+	if (static_string[i] == '\0')
+	{
+		free(static_string);
+		return (NULL);
+	}
 	temp = (char *)malloc((ft_strlen(static_string) - i + 1) * sizeof(char));
+	if (!temp)
+		return (NULL);
 	i++;
 	while (static_string[i] != '\0')
 		temp[j++] = static_string[i++];
+	temp[j] = '\0';
 	free(static_string);
 	return (temp);
 }
@@ -51,15 +58,16 @@ char	*ft_look_for_line(char *static_string)
 
 	i = 0;
 	j = 0;
+	if (static_string[i] == '\0')
+		return (NULL);
 	while (static_string[i] != '\0' && static_string[i] != '\n')
 		i++;
-	if (static_string[i + 1] == '\n')
+	if (static_string[i] == '\n')
 		i++;
 	temp = (char *)malloc((i + 1) * sizeof(char));
 	if (!temp)
 		return (NULL);
-	printf("> %d", i);
-	while (j <= i)
+	while (j < i)
 	{
 		temp[j] = static_string[j];
 		j++;
@@ -203,17 +211,21 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	static_string = ft_read_file(fd, static_string);
+	if (!static_string)
+		return (NULL);
 	returned_line = ft_look_for_line(static_string);
 	static_string = ft_remaining_string(static_string);
 	return (returned_line);
 }
 
-int	main(void)
-{
-	char	*result;
-	int		fd;
+// int	main(void)
+// {
+// 	char	*result;
+// 	int		fd;
 
-	fd = open("test.txt", O_RDONLY);
-	result = get_next_line(fd);
-	printf("|%s", result);
-}
+// 	fd = open("test.txt", O_RDONLY);
+// 	result = get_next_line(fd);
+// 	printf("%s", result);
+// 	close(fd);
+// 	return (0);
+// }

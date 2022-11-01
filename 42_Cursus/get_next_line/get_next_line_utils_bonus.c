@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iiwanczu <iiwanczu@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 18:47:27 by iiwanczu          #+#    #+#             */
-/*   Updated: 2022/11/01 18:34:08 by iiwanczu         ###   ########.fr       */
+/*   Updated: 2022/11/01 18:36:04 by iiwanczu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t	ft_strlen(const char *str)
 {
@@ -26,12 +26,6 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-/****************************************************************************
-· Looks for the FIRST instance of the "c" character.
-· Returns NULL if the character wasn't found, or if the character was found,
-it returns the "s" pointer pointing to the first instance of the character
-"c" in the string.
-****************************************************************************/
 int	ft_look_for_char(char *str, char c)
 {
 	int	i;
@@ -48,13 +42,6 @@ int	ft_look_for_char(char *str, char c)
 	return (0);
 }
 
-/****************************************************************************
-· Will join s1 and s2 together into a brand new string named "joined", which
-will be returned. 
-· But also, this function is specific for get_next_line, since s1 CAN actually
-be NULL, and if it is we just assign it one memory space with a null 
-character, just so that we can join it with s2.
-****************************************************************************/
 char	*ft_strjoin(char *s1, char *s2)
 {
 	size_t		i;
