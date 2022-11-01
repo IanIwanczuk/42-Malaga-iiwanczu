@@ -6,7 +6,7 @@
 /*   By: iiwanczu <iiwanczu@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 17:11:20 by iiwanczu          #+#    #+#             */
-/*   Updated: 2022/10/31 20:07:21 by iiwanczu         ###   ########.fr       */
+/*   Updated: 2022/11/01 14:23:31 by iiwanczu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,26 @@
 // get_next_line.c, get_next_line_utils.c,
 // get_next_line.h
 
+
+/****************************************************************************
+
+****************************************************************************/
 char	*ft_remaining_string(char *static_string)
 {
+	char	*temp;
+	int		i;
+	int		j;
 
-	return (0);
+	i = 0;
+	j = 0;
+	while (static_string[i] != '\0' && static_string[i] != '\n')
+		i++;
+	temp = (char *)malloc((ft_strlen(static_string) - i + 1) * sizeof(char));
+	i++;
+	while (static_string[i] != '\0')
+		temp[j++] = static_string[i++];
+	free(static_string);
+	return (temp);
 }
 
 /****************************************************************************
@@ -31,14 +47,25 @@ char	*ft_look_for_line(char *static_string)
 {
 	char	*temp;
 	int		i;
+	int		j;
 
 	i = 0;
+	j = 0;
 	while (static_string[i] != '\0' && static_string[i] != '\n')
 		i++;
+	if (static_string[i + 1] == '\n')
+		i++;
 	temp = (char *)malloc((i + 1) * sizeof(char));
-	i = 0;
-	while(static_string)
-	return (0);
+	if (!temp)
+		return (NULL);
+	printf("> %d", i);
+	while (j <= i)
+	{
+		temp[j] = static_string[j];
+		j++;
+	}
+	temp[j] = '\0';
+	return (temp);
 }
 
 /****************************************************************************
@@ -59,19 +86,20 @@ of the null character ('\0').
 do a weird method where inside the while, one condition is "r != 0", which
 basically means, read() was able to read something (If positive).
 
->> while (!ft_strchr(static_string, '\n') && r != 0)
+>> while (!ft_look_for_char(static_string, '\n') && r != 0)
 1- The "r" condition is really easy, "r" is the return value of the function
 read() everytime we call it, and it it's positive we'll keep going. But if
 it's negative we have a sepparate condition inside the while loop.
 
-2- The "!ft_strchr(static_string, '\n')" conditon may look a little bit
-strange, but basically what we're trying to ask with "ft_strchr()" (without 
-negation) is: Is there a new line character in the "temp" char array?
+2- The "!ft_look_for_char(static_string, '\n')" conditon may look a little bit
+strange, but basically what we're trying to ask with "ft_look_for_char()" 
+(without negation) is: Is there a new line character in the "temp" char array?
 If there is, then we can finally get a LINE, and we can leave the loop. If
 not, then we shall keep going.
 
 · So then, this while loop will only stop if: read() function does NOT return
-a positive value, OR if the ft_strchr() returns something different from NULL.
+a positive value, OR if the ft_look_for_char() returns something different from 
+NULL, which basically means "We didn't find a new line character in this string".
 
 >> if (r == -1)
 1- If the read fails inside the loop, we just free "temp", because it's dynamic
@@ -89,14 +117,16 @@ This is why I had to do the "(BUFFER_SIZE + 1)" when we did the malloc to "temp"
 new assigned "static_string".
 
 ****************************************************************************/
-int	ft_read_file(int fd, char *static_string)
+char	*ft_read_file(int fd, char *static_string)
 {
 	ssize_t	r;
 	char	*temp;
 
 	temp = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
+	if (!temp)
+		return (NULL);
 	r = 1;
-	while (!ft_strchr(static_string, '\n') && r != 0)
+	while (!ft_look_for_char(static_string, '\n') && r != 0)
 	{
 		r = read(fd, temp, BUFFER_SIZE);
 		if (r == -1)
@@ -178,22 +208,12 @@ char	*get_next_line(int fd)
 	return (returned_line);
 }
 
-// int	main(void)
-// {
-// 	int		fd;
-// 	char	*result;
-// 	int		i;
+int	main(void)
+{
+	char	*result;
+	int		fd;
 
-// 	fd = open("test.txt", O_RDONLY);
-// 	result = get_next_line(fd);
-// 	while (result != NULL)
-// 	{
-// 		i++;
-// 		printf("%d::%s", i, result);
-// 		result = get_next_line(fd);
-// 		free(result);
-// 	}
-// 	close(fd);
-// 	system("leaks -q a.out");
-// 	return (0);
-// }
+	fd = open("test.txt", O_RDONLY);
+	result = get_next_line(fd);
+	printf("|%s", result);
+}

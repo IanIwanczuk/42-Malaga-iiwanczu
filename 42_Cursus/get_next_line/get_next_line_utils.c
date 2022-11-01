@@ -6,11 +6,11 @@
 /*   By: iiwanczu <iiwanczu@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 18:47:27 by iiwanczu          #+#    #+#             */
-/*   Updated: 2022/10/31 19:39:45 by iiwanczu         ###   ########.fr       */
+/*   Updated: 2022/11/01 13:01:00 by iiwanczu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <get_next_line.h>
+#include "get_next_line.h"
 
 size_t	ft_strlen(const char *str)
 {
@@ -32,27 +32,17 @@ size_t	ft_strlen(const char *str)
 it returns the "s" pointer pointing to the first instance of the character
 "c" in the string.
 ****************************************************************************/
-char	*ft_strchr(const char *s, int c)
+int	ft_look_for_char(char *str, char c)
 {
 	size_t	i;
-	char	*chr_index;
-	char	*str_two;
 
 	i = 0;
-	chr_index = NULL;
-	str_two = (char *)s;
-	while (i < ft_strlen(s))
+	while (i < ft_strlen(str))
 	{
-		if (str_two[i] == (char)c)
-		{
-			chr_index = str_two + i;
-			break ;
-		}
-		i++;
+		if (str[i++] == c)
+			return (1);
 	}
-	if ((char)c == '\0')
-		return (str_two + i);
-	return (chr_index);
+	return (0);
 }
 
 /****************************************************************************
