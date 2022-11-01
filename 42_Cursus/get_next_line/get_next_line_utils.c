@@ -6,7 +6,7 @@
 /*   By: iiwanczu <iiwanczu@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 18:47:27 by iiwanczu          #+#    #+#             */
-/*   Updated: 2022/11/01 18:34:08 by iiwanczu         ###   ########.fr       */
+/*   Updated: 2022/11/01 18:52:34 by iiwanczu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,11 @@ size_t	ft_strlen(const char *str)
 
 /****************************************************************************
 · Looks for the FIRST instance of the "c" character.
-· Returns NULL if the character wasn't found, or if the character was found,
-it returns the "s" pointer pointing to the first instance of the character
-"c" in the string.
+· Originated from the ft_strchr() function, but decided to change it since we
+are not using if for actual pointers or index positions, we only want to know
+if the character "c" was found in the string we recieved.
+· Returns 0 if null string or if it didn't find the character.
+· Returns 1 if it found the character.
 ****************************************************************************/
 int	ft_look_for_char(char *str, char c)
 {
