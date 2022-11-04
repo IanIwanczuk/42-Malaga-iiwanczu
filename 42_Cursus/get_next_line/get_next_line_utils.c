@@ -6,7 +6,7 @@
 /*   By: iiwanczu <iiwanczu@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 18:47:27 by iiwanczu          #+#    #+#             */
-/*   Updated: 2022/11/01 18:52:34 by iiwanczu         ###   ########.fr       */
+/*   Updated: 2022/11/02 15:25:36 by iiwanczu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ size_t	ft_strlen(const char *str)
 	size_t	i;
 
 	i = 0;
-	if (!str)
-		return (0);
 	while (str[i] != '\0')
 	{
 		i++;

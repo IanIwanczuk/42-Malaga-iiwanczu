@@ -6,7 +6,7 @@
 /*   By: iiwanczu <iiwanczu@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 17:11:20 by iiwanczu          #+#    #+#             */
-/*   Updated: 2022/11/01 20:03:50 by iiwanczu         ###   ########.fr       */
+/*   Updated: 2022/11/04 13:46:00 by iiwanczu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ been stored in the static variable.
 >> if (static_string[i] == '\0')
  1- To understand this condition, we should understand that:
 	· The "i" variable will only be incremented if the first position
-	(Because "i" is initially zero).
+	(Because "i" is initially zero) is different from '\n' and '\0'.
 	· We WON'T enter the while() loop if the first position is equal to
 	either '\0' or '\n'. 
 	· So then, the condition will only execute if the first position is
@@ -318,14 +318,20 @@ char	*get_next_line(int fd)
 	return (returned_line);
 }
 
-// int	main(void)
-// {
-// 	char	*result;
-// 	int		fd;
+int	main(void)
+{
+	char	*result;
+	int		fd;
 
-// 	fd = open("test.txt", O_RDONLY);
-// 	result = get_next_line(fd);
-// 	printf("%s", result);
-// 	close(fd);
-// 	return (0);
-// }
+	fd = open("test.txt", O_RDONLY);
+	result = get_next_line(fd);
+	printf("%s", result);
+	close(fd);
+	system("leaks a.out");
+	return (0);
+}
+
+// :: Por qué castear el malloc.
+// :: Entender el sizeof() y cuánto ocupa cada tipo de variable.
+// :: Justificar el uso de ssize_t sobre un int, explicar las diferencias.
+// :: Entender la explicación del bonus.
