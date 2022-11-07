@@ -6,7 +6,7 @@
 /*   By: iiwanczu <iiwanczu@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 17:11:20 by iiwanczu          #+#    #+#             */
-/*   Updated: 2022/11/04 13:46:00 by iiwanczu         ###   ########.fr       */
+/*   Updated: 2022/11/07 17:01:24 by iiwanczu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -318,18 +318,22 @@ char	*get_next_line(int fd)
 	return (returned_line);
 }
 
-int	main(void)
-{
-	char	*result;
-	int		fd;
+// int	main(void)
+// {
+// 	char	*result;
+// 	int		fd;
 
-	fd = open("test.txt", O_RDONLY);
-	result = get_next_line(fd);
-	printf("%s", result);
-	close(fd);
-	system("leaks a.out");
-	return (0);
-}
+// 	fd = open("test.txt", O_RDONLY);
+// 	result = "";
+// 	while (result != NULL)
+// 	{
+// 		printf("|%s", result);
+// 		result = get_next_line(fd);
+// 	}
+// 	system("leaks a.out");
+// 	close(fd);
+// 	return (0);
+// }
 
 // :: Por qué castear el malloc.
 // :: Entender el sizeof() y cuánto ocupa cada tipo de variable.
