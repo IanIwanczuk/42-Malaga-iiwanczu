@@ -6,7 +6,7 @@
 /*   By: iiwanczu <iiwanczu@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 18:47:27 by iiwanczu          #+#    #+#             */
-/*   Updated: 2022/11/02 15:25:36 by iiwanczu         ###   ########.fr       */
+/*   Updated: 2022/11/07 18:36:54 by iiwanczu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,12 @@ char	*ft_strjoin(char *s1, char *s2)
 
 	if (s1 == NULL)
 	{
-		s1 = (char *)malloc(sizeof(char));
+		s1 = malloc(sizeof(char));
 		s1[0] = '\0';
 	}
 	if (!s1 || !s2)
 		return (NULL);
-	joined = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	joined = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof * joined);
 	if (!joined)
 		return (NULL);
 	i = 0;

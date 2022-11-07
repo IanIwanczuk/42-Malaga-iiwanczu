@@ -6,7 +6,7 @@
 /*   By: iiwanczu <iiwanczu@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 17:11:20 by iiwanczu          #+#    #+#             */
-/*   Updated: 2022/11/07 17:01:24 by iiwanczu         ###   ########.fr       */
+/*   Updated: 2022/11/07 18:43:27 by iiwanczu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ char	*ft_remaining_string(char *static_string)
 		free(static_string);
 		return (NULL);
 	}
-	temp = (char *)malloc((ft_strlen(static_string) - i + 1) * sizeof(char));
+	temp = malloc((ft_strlen(static_string) - i + 1) * sizeof * temp);
 	if (!temp)
 		return (NULL);
 	i++;
@@ -160,7 +160,7 @@ char	*ft_look_for_line(char *static_string)
 		i++;
 	if (static_string[i] == '\n')
 		i++;
-	temp = (char *)malloc((i + 1) * sizeof(char));
+	temp = malloc((i + 1) * sizeof * temp);
 	if (!temp)
 		return (NULL);
 	while (j < i)
@@ -232,7 +232,7 @@ char	*ft_read_file(int fd, char *static_string)
 	ssize_t	r;
 	char	*temp;
 
-	temp = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
+	temp = malloc((BUFFER_SIZE + 1) * sizeof * temp);
 	if (!temp)
 		return (NULL);
 	r = 1;
@@ -318,22 +318,22 @@ char	*get_next_line(int fd)
 	return (returned_line);
 }
 
-// int	main(void)
-// {
-// 	char	*result;
-// 	int		fd;
+int	main(void)
+{
+	char	*result;
+	int		fd;
 
-// 	fd = open("test.txt", O_RDONLY);
-// 	result = "";
-// 	while (result != NULL)
-// 	{
-// 		printf("|%s", result);
-// 		result = get_next_line(fd);
-// 	}
-// 	system("leaks a.out");
-// 	close(fd);
-// 	return (0);
-// }
+	fd = open("test.txt", O_RDONLY);
+	result = "";
+	while (result != NULL)
+	{
+		printf("|%s", result);
+		result = get_next_line(fd);
+	}
+	system("leaks a.out");
+	close(fd);
+	return (0);
+}
 
 // :: Por qué castear el malloc.
 // :: Entender el sizeof() y cuánto ocupa cada tipo de variable.

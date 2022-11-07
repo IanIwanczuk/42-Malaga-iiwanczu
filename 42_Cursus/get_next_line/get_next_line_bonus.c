@@ -6,7 +6,7 @@
 /*   By: iiwanczu <iiwanczu@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 17:11:20 by iiwanczu          #+#    #+#             */
-/*   Updated: 2022/11/02 16:05:26 by iiwanczu         ###   ########.fr       */
+/*   Updated: 2022/11/07 18:41:38 by iiwanczu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_remaining_string(char *static_string)
 		free(static_string);
 		return (NULL);
 	}
-	temp = (char *)malloc((ft_strlen(static_string) - i + 1) * sizeof(char));
+	temp = malloc((ft_strlen(static_string) - i + 1) * sizeof * temp);
 	if (!temp)
 		return (NULL);
 	i++;
@@ -52,7 +52,7 @@ char	*ft_look_for_line(char *static_string)
 		i++;
 	if (static_string[i] == '\n')
 		i++;
-	temp = (char *)malloc((i + 1) * sizeof(char));
+	temp = malloc((i + 1) * sizeof * temp);
 	if (!temp)
 		return (NULL);
 	while (j < i)
@@ -69,7 +69,7 @@ char	*ft_read_file(int fd, char *static_string)
 	ssize_t	r;
 	char	*temp;
 
-	temp = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
+	temp = malloc((BUFFER_SIZE + 1) * sizeof * temp);
 	if (!temp)
 		return (NULL);
 	r = 1;
@@ -119,4 +119,4 @@ char	*get_next_line(int fd)
 	returned_line = ft_look_for_line(static_string[fd]);
 	static_string[fd] = ft_remaining_string(static_string[fd]);
 	return (returned_line);
-} 
+}
