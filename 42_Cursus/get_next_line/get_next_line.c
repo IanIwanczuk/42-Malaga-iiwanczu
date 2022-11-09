@@ -6,7 +6,7 @@
 /*   By: iiwanczu <iiwanczu@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 17:11:20 by iiwanczu          #+#    #+#             */
-/*   Updated: 2022/11/07 18:43:27 by iiwanczu         ###   ########.fr       */
+/*   Updated: 2022/11/09 17:16:03 by iiwanczu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -334,8 +334,3 @@ int	main(void)
 	close(fd);
 	return (0);
 }
-
-// :: Por qué castear el malloc.
-// :: Entender el sizeof() y cuánto ocupa cada tipo de variable.
-// :: Justificar el uso de ssize_t sobre un int, explicar las diferencias.
-// :: Entender la explicación del bonus.

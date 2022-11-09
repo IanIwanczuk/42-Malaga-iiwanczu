@@ -6,7 +6,7 @@
 /*   By: iiwanczu <iiwanczu@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 19:15:57 by iiwanczu          #+#    #+#             */
-/*   Updated: 2022/10/17 15:32:04 by iiwanczu         ###   ########.fr       */
+/*   Updated: 2022/11/07 13:43:28 by iiwanczu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,27 +65,27 @@ int	ft_printf(const char *str, ...)
 	return (printed_len);
 }
 
-// int main (void)
+// int	main(void)
 // {
-// 	char		test1 = 'c';
-// 	int			test2 = 12345;
-// 	char		*test3 = "Hola";
-// 	void	*test4 = NULL;
-// 	unsigned int		test5 = 10;
-// 	ft_printf("test 1: %c\n", test1);
-// 	printf("test 1: %c\n", test1);
-// 	ft_printf("test 2: %d\n", test2);
-// 	printf("test 2: %d\n", test2);
-// 	ft_printf("test 3: %s\n", test3);
-// 	printf("test 3: %s\n", test3);
-// 	ft_printf("test 4: %p\n", test4);
-// 	printf("test 4: %p\n", test4);
-// 	ft_printf("test 5: %u\n", test5);
-// 	printf("test 5: %u\n", test5);
-// 	ft_printf("test 6: %x\n", test5);
-// 	printf("test 6: %x\n", test5);
-// 	ft_printf("test 7: %%\n");
-// 	printf("test 7: %%\n");
-// 	ft_printf("\nesp test: %d, %d, %c\n", test1, test2, test1);
-// 	printf("esp test: %c, %d, %s\n", test1, test2, test3);
+// 	char			test1;
+// 	int				test2;
+// 	char			*test3;
+// 	void			*test4;
+// 	unsigned int	test5;
+
+// 	test1 = 'c';
+// 	test2 = 12345;
+// 	test3 = "Hola";
+// 	test4 = NULL;
+// 	test5 = 10;
+
+// 	ft_printf("---FT_PRINTF---\nTest 1: %c\nTest 2: %d\nTest 3: %s\nTest 4: %p"
+// 		" / %p\nTest 5: %u\nTest 6: %x / %X\nTest 7: %%\n",
+// 		test1, test2, test3, test4, &test4, test5, test2, test2);
+// 	printf("---PRINTF---\nTest 1: %c\nTest 2: %d\nTest 3: %s\nTest 4: %p / %p\n"
+// 		"Test 5: %u\nTest 6: %x / %X\nTest 7: %%\n",
+// 		test1, test2, test3, test4, &test4, test5, test2, test2);
+// 	printf("[%d][%p]\n[%u][%u][%x]", test2, &test4, test5, test5, test2);
+// 	ft_printf("[%d][%p]\n[%u][%u][%x]", test2, &test4, test5, test5,
+// 		test2);
 // }
