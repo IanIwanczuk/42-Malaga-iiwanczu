@@ -6,7 +6,7 @@
 /*   By: iiwanczu <iiwanczu@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 18:47:27 by iiwanczu          #+#    #+#             */
-/*   Updated: 2022/11/09 17:12:14 by iiwanczu         ###   ########.fr       */
+/*   Updated: 2022/11/11 17:45:33 by iiwanczu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ size_t	ft_strlen(const char *str)
 	size_t	i;
 
 	i = 0;
+	if (!str)
+		return (0);
 	while (str[i] != '\0')
 	{
 		i++;
@@ -24,14 +26,7 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-/****************************************************************************
-· Looks for the FIRST instance of the "c" character.
-· Originated from the ft_strchr() function, but decided to change it since we
-are not using if for actual pointers or index positions, we only want to know
-if the character "c" was found in the string we recieved.
-· Returns 0 if null string or if it didn't find the character.
-· Returns 1 if it found the character.
-****************************************************************************/
+// Returns 1 if character was found, 0 if not or str is empty.
 int	ft_look_for_char(char *str, char c)
 {
 	int	i;
@@ -48,13 +43,7 @@ int	ft_look_for_char(char *str, char c)
 	return (0);
 }
 
-/****************************************************************************
-· Will join s1 and s2 together into a brand new string named "joined", which
-will be returned. 
-· But also, this function is specific for get_next_line, since s1 CAN actually
-be NULL, and if it is we just assign it one memory space with a null 
-character, just so that we can join it with s2.
-****************************************************************************/
+// Creates and returns a new string with the contents of s1 and s2.
 char	*ft_strjoin(char *s1, char *s2)
 {
 	size_t		i;
@@ -63,7 +52,7 @@ char	*ft_strjoin(char *s1, char *s2)
 
 	if (s1 == NULL)
 	{
-		s1 = malloc(sizeof(char));
+		s1 = malloc(sizeof * s1);
 		s1[0] = '\0';
 	}
 	if (!s1 || !s2)
@@ -71,14 +60,23 @@ char	*ft_strjoin(char *s1, char *s2)
 	joined = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof * joined);
 	if (!joined)
 		return (NULL);
-	i = 0;
+	i = -1;
 	j = 0;
-	while (s1[i] != '\0')
-		joined[j++] = s1[i++];
-	i = 0;
-	while (s2[i] != '\0')
-		joined[j++] = s2[i++];
-	joined[j] = '\0';
+	if (s1)
+		while (s1[++i] != '\0')
+			joined[i] = s1[i];
+	while (s2[j] != '\0')
+		joined[i++] = s2[j++];
+	joined[ft_strlen(s1) + ft_strlen(s2)] = '\0';
 	free(s1);
 	return (joined);
 }
+
+	// i = 0;
+	// j = 0;
+	// while (s1[i] != '\0')
+	// 	joined[j++] = s1[i++];
+	// i = 0;
+	// while (s2[i] != '\0')
+	// 	joined[j++] = s2[i++];
+	// joined[j] = '\0';
