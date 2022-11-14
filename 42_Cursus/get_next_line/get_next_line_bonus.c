@@ -6,7 +6,7 @@
 /*   By: iiwanczu <iiwanczu@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 17:11:20 by iiwanczu          #+#    #+#             */
-/*   Updated: 2022/11/11 15:39:18 by iiwanczu         ###   ########.fr       */
+/*   Updated: 2022/11/14 16:27:42 by iiwanczu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,23 +89,8 @@ char	*ft_read_file(int fd, char *static_string)
 	return (static_string);
 }
 
-/****************************************************************************
-------------------------------- BONUS PART ----------------------------------
-· The bonus part is very straight forward, since the code is literally just
-the same except for the "main" function. Basically, the objective is to be
-able to read as many file descriptors as possible.
-
-· The "strategy" shown here is a little bit cheesy, because we are already
-establishing the size of the static variable (Which is now two-dimensional).
-
-· Why 4096? Because that's system's maximum number of file descriptors that
-it can open, not any more than that exact amount.
-
-· Then, instead of using a single file descriptor in every different function
-call, we just simply use the "[fd]" index to indicate which file descriptor
-we're talking about.
------------------------------------------------------------------------------
-****************************************************************************/
+// · Why 4096? Because that's system's maximum number of file descriptors that
+//	 it can open, not any more than that exact amount.
 char	*get_next_line(int fd)
 {
 	static char	*static_string[4096];

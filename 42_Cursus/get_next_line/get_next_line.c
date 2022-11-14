@@ -6,7 +6,7 @@
 /*   By: iiwanczu <iiwanczu@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 17:11:20 by iiwanczu          #+#    #+#             */
-/*   Updated: 2022/11/11 17:45:38 by iiwanczu         ###   ########.fr       */
+/*   Updated: 2022/11/14 17:36:00 by iiwanczu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,58 +44,27 @@ char	*ft_look_for_line(char *static_string)
 {
 	char	*temp;
 	int		i;
+	int		j;
 
 	i = 0;
+	j = 0;
 	if (static_string[i] == '\0')
 		return (NULL);
 	while (static_string[i] != '\0' && static_string[i] != '\n')
 		i++;
-	temp = malloc((i + 2) * sizeof * temp);
+	if (static_string[i] == '\n')
+		i++;
+	temp = malloc((i + 1) * sizeof * temp);
 	if (!temp)
 		return (NULL);
-	i = 0;
-	while (static_string[i] != '\0' && static_string[i] != '\n')
+	while (j < i)
 	{
-		temp[i] = static_string[i];
-		i++;
-	}
-	if (static_string[i] == '\n')
-	{
-		temp[i] = static_string[i];
-		i++;
+		temp[j] = static_string[j];
+		j++;
 	}
 	temp[i] = '\0';
 	return (temp);
 }
-	// while (static_string[i] != '\0' && static_string[i] != '\n')
-	// 	i++;
-	// if (static_string[i] == '\n')
-	// 	i++;
-	// temp = malloc((i + 1) * sizeof * temp);
-	// if (!temp)
-	// 	return (NULL);
-	// while (j < i)
-	// {
-	// 	temp[j] = static_string[j];
-	// 	j++;
-	// }
-	// -------------------------------------------------------
-	// while (static_string[i] != '\0' && static_string[i] != '\n')
-	// 	i++;
-	// temp = malloc((i + 2) * sizeof * temp);
-	// if (!temp)
-	// 	return (NULL);
-	// i = 0;
-	// while (static_string[i] != '\0' && static_string[i] != '\n')
-	// {
-	// 	temp[i] = static_string[i];
-	// 	i++;
-	// }
-	// if (static_string[i] == '\n')
-	// {
-	// 	temp[i] = static_string[i];
-	// 	i++;
-	// }
 
 // Reads the fd received.
 char	*ft_read_file(int fd, char *static_string)
@@ -137,21 +106,4 @@ char	*get_next_line(int fd)
 	returned_line = ft_look_for_line(static_string);
 	static_string = ft_remaining_string(static_string);
 	return (returned_line);
-}
-
-int	main(void)
-{
-	char	*result;
-	int		fd;
-
-	fd = open("test.txt", O_RDONLY);
-	result = "";
-	while (result != NULL)
-	{
-		printf("|%s", result);
-		result = get_next_line(fd);
-	}
-	system("leaks a.out");
-	close(fd);
-	return (0);
 }
