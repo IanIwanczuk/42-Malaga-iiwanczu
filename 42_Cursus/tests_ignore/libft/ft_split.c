@@ -6,7 +6,7 @@
 /*   By: iiwanczu <iiwanczu@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 13:01:13 by iiwanczu          #+#    #+#             */
-/*   Updated: 2022/12/05 15:06:00 by iiwanczu         ###   ########.fr       */
+/*   Updated: 2022/12/05 17:15:22 by iiwanczu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,38 +32,22 @@ static int	ft_count_words(char const *s, char c)
 	return (words);
 }
 
-
-int	ft_word_len(char const *string, char c, int *string_index)
-{
-	int	len;
-
-	len = 0;
-	if (!string)
-		return (0);
-	while (string[*string_index] != '\0' && string[*string_index] != c)
-	{
-		(*string_index)++;
-		len++;
-	}
-	while (string[*string_index] == c)
-		(*string_index)++;
-	return (len);
-}
-
-static char	*ft_allocate_words(char const *s, char c, int word_len,
-int next_word)
+static char	*ft_allocate_words(char const *s, char c, int word_len)
 {
 	char	*word;
-	int		i;
 	int		j;
 
+	if (!s)
+		return (NULL);
 	word = malloc(sizeof * word * (word_len + 1));
 	if (!word)
 		return (NULL);
-	i = next_word;
 	j = 0;
-	while (s[i] != c && s[i] != '\0')
-		word[j++] = s[i++];
+	while (*s != c && *s != '\0')
+	{
+		word[j++] = *s;
+		s++;
+	}
 	word[j] = '\0';
 	return (word);
 }
@@ -73,21 +57,19 @@ char	**ft_split(char const *s, char c)
 	char	**result;
 	int		word_count;
 	int		string_index;
-	int		next_word;
 	int		i;
 
+	if (!s)
+		return (NULL);
 	word_count = ft_count_words(s, c);
 	result = malloc(sizeof * result * (word_count + 1));
-	if (!result || word_count == 0)
+	if (!result)
 		return (NULL);
 	result[word_count] = NULL;
 	i = 0;
 	string_index = 0;
 	while (i < word_count)
 	{
-		next_word = string_index;
-		result[i] = ft_allocate_words(s, c, ft_word_len(s, c, &string_index),
-				next_word);
 		i++;
 	}
 	return (result);
@@ -95,6 +77,6 @@ char	**ft_split(char const *s, char c)
 
 int	main(void)
 {
-	ft_split("Ho,la,-b,ue,nos,-d,ia,s,", ',');
+	ft_split("   lorem   ipsum dolor     sit amet, consectetur   adipiscing elit. Sed non risus. Suspendisse   ", ' ');
 	return (0);
 }

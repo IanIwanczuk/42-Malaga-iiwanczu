@@ -6,7 +6,7 @@
 /*   By: iiwanczu <iiwanczu@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 16:46:48 by iiwanczu          #+#    #+#             */
-/*   Updated: 2022/12/05 13:41:16 by iiwanczu         ###   ########.fr       */
+/*   Updated: 2022/12/05 16:18:30 by iiwanczu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,17 +72,8 @@ char	**ft_split(char const *s, char c)
 	return (result);
 }
 
-// int	main(void)
-// {
-// 	char	**result;
-// 	int		i;
-
-// 	i = 0;
-// 	result = ft_split("assssx laaaak gccccl xddddq", ' ');
-// 	while (result[i] != NULL)
-// 	{
-// 		printf("%d: [%s]\n", i, result[i]);
-// 		i++;
-// 	}
-// 	return (0);
-// }
+int	main(void)
+{
+	ft_split("   lorem   ipsum dolor     sit amet, consectetur   adipiscing elit. Sed non risus. Suspendisse   ", ' ');
+	return (0);
+}
